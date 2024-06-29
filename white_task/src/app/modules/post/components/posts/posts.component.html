@@ -1,0 +1,41 @@
+<!-- Start Posts Listing Section -->
+<section class="posts d-flex justify-content-center align-items-center py-5">
+  <div class="container">
+    <div class="row text-center align-items-center">
+      <h1 class="heading py-4 text-center">
+        Our <span class="px-3">Posts</span>
+      </h1>
+
+      <div class="row py-5 g-5">
+        <div class="col-12 d-flex justify-content-end m-0">
+          <mat-form-field class="search-input" appearance="fill">
+            <input
+              [formControl]="searchControl"
+              matInput
+              placeholder="Search by post title or body"
+            />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        @defer (when !isLoading) {
+        <div class="row p-0">
+          @for (post of filteredPosts; track post.id; let i = $index) {
+          <div class="col-md-4 mb-5">
+            <app-post-card [post]="post" />
+          </div>
+          } @empty {
+          <div class="col-md-12">
+            <app-not-found-data />
+          </div>
+          }
+        </div>
+        } @placeholder {
+        <div class="d-flex align-items-center justify-content-center">
+          <app-spinner-loading color="#eb4d4b" />
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Posts Listing Section -->

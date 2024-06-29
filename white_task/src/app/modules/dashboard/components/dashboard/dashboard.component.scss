@@ -1,0 +1,13 @@
+// Start Section Dashboard
+@import "variables";
+.dashboard {
+    padding: 3rem 0;
+    .heading {
+        font-size: 3.5rem;
+        color: $main-color;
+        span {
+            color: $red-color;
+        }
+    }
+}
+// End Section Dashboard

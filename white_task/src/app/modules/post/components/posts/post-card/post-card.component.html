@@ -1,0 +1,29 @@
+<div class="card h-100 text-start">
+  <div class="image">
+    <img src="assets/images/blog-4.jpg" class="card-img-top" alt="Blog#1" />
+  </div>
+  <div class="card-body">
+    <h3>{{ post().title }}</h3>
+    <p>{{ post().body }}</p>
+    <a class="btn" [routerLink]="['/posts/', post().id]">read more</a>
+    <div class="icons d-flex align-items-center justify-content-between">
+      <a>
+        <span>
+          <button mat-icon-button>
+            <mat-icon> calendar_month</mat-icon>
+          </button>
+          21st may, 2021
+        </span></a
+      >
+      <a>
+        <span
+          ><i class="fas fa-user"></i>
+          <button mat-icon-button>
+            <mat-icon> person</mat-icon>
+          </button>
+          By {{ user?.name }}</span
+        ></a
+      >
+    </div>
+  </div>
+</div>

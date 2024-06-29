@@ -1,0 +1,82 @@
+<!-- Start Post Details Section -->
+<section class="post d-flex justify-content-center align-items-center py-5">
+  <div class="container">
+    <div class="row text-center align-items-center">
+      <h1 class="heading py-4 text-center">
+        Post <span class="px-3">Details</span>
+      </h1>
+      <div class="row pt-5">
+        <div class="col-1">
+          <button
+            class="back-button rounded-circle"
+            [routerLink]="['/posts']"
+            mat-icon-button
+          >
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="row py-5 w-50 m-auto">
+        @defer (when !isLoading && post) {
+        <mat-card class="post-card">
+          <mat-card-header>
+            <img
+              [src]="
+                'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg'
+              "
+              class="card-img-top"
+              [alt]="''"
+            />
+            <h5 class="text-primary pt-4 px-3">{{ user?.name }}</h5>
+          </mat-card-header>
+
+          <mat-card-content class="py-5">
+            <h3 class="text-primary text-start">
+              {{ post.title }}
+            </h3>
+
+            <p>
+              {{ post.body }}
+            </p>
+            <!-- Start Comments Section -->
+            <h3 class="text-start text-primary py-3">
+              All Comments
+              <span class="text-danger">{{ comments.length }}</span>
+            </h3>
+            @for (comment of comments; track comment.id; let i = $index) {
+            <div class="mb-3 row pt-3 text-md-start text-center comment-card">
+              <div
+                class="col-md-2 d-flex justify-content-center align-items-center"
+              >
+                <img
+                  [ngSrc]="
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg'
+                  "
+                  width="50"
+                  height="50"
+                  class="image-cover"
+                />
+              </div>
+              <div class="col-md-8">
+                <h4 class="text-primary">{{ comment.name }}</h4>
+                <p class="text-primary">{{ comment.body }}</p>
+              </div>
+              <!-- <div class="col-md-4">
+                <p>{{ comment.email }}</p>
+              </div> -->
+              <div class="divider border-bottom"></div>
+            </div>
+            }
+            <!-- End Comments Section -->
+          </mat-card-content>
+        </mat-card>
+        } @placeholder {
+        <div class="d-flex align-items-center justify-content-center">
+          <app-spinner-loading color="#eb4d4b" />
+        </div>
+        }
+      </div>
+      <!-- Start Post Details Section -->
+    </div>
+  </div>
+</section>
